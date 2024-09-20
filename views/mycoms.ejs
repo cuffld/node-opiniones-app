@@ -1,0 +1,23 @@
+<html style="font-size:1.5rem;margin-left:20%;margin-right:20%;">
+<head>
+  <title>Tus comentarios</title>
+  <%- include('head') -%>
+</head>
+<body style="display:flex;justify-content:space-evenly;">
+<div class="content-column">
+<% myComments.forEach(post => { %>
+    <div>
+	  <div class="rating">
+      <h4><a href="<%= post.id%>"><%= post.date.toLocaleDateString("en-ES") %></a></h4>
+	  </div>
+	  <article>
+<% if(post.comment.length >= 100){ %>
+        <%= post.comment.substring(0, 220) %><a href="/api/productos/<%= post._id %>"> ver mas...</a>
+        <% }else{ %>
+        <%= post.comment %>
+        <% } %>
+    </article>
+	</div>
+<% }) %>
+</div>
+</body>

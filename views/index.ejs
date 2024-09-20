@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('head.ejs') -%>
+  <body>
+    <nav class="container">
+      <div class="almondale">
+        <div>
+          <img src="img/almondale.png" alt="LA" />
+        </div>
+	<div class="sidebar"></div>
+        <div><h3>The Almondale School Valle</h3></div>
+      </div>
+	<% if (!user) { %>
+        <a id="buttonSpan" href="/login" class="btn trans google-login" style="color:black; text-decoration:none;">
+	        <p>Autorizarse con<div><ion-icon name="logo-google" style="font-size:40px;"></ion-icon></div></p></a>
+	<% } else { %>
+        <a href="/api/user/comentarios/<%= user.id %>">Tus comentarios</a>
+        <% if(user.admin){ %>
+        <a href="/admin">Admin</a>
+        <% } %>
+	      <a href="/logout" title="Salir de la cuenta"><ion-icon name="exit-outline" style="font-size:2.5rem;"></ion-icon></a>
+	<% } %>
+    </nav>
+    <div class="content">
+      <div class="content-column">
+<h2><a href="/comentarios/recientes">OPINIONES RECIENTES</a></h2>
+      <% for(let i = 1; i <= Math.min(data.length, 10); i++){ %>
+        <% const post = data.at(-i)%>
+        <% if (post.verified) {%>
+	<div class="post" data-post-id="<%= post.id %>">
+	  <div class="rating">
+          <h4><%= post.date.toLocaleDateString("en-ES") %></h4>
+      <% if (post.likedBy.includes(user.id)) {%>
+        <div class="post-rating post-rating-selected">
+        <% }else{ %>
+	        <div class="post-rating">
+        <% } %>
+        <ion-icon class="post-rating-button arrow-up btn trans opi" size="large" name="heart"></ion-icon>
+        <span class="post-rating-count"><%= post.likedBy.length %></span>
+	    </div>
+	  </div>
+	  <article>
+      <% if(post.comment.length >= 100){ %>
+        <%= post.comment.substring(0, 220) %><a href="/api/productos/<%= post._id %>"> ver mas...</a>
+        <% }else{ %>
+        <%= post.comment %>
+        <% } %>
+    </article>
+	</div>
+  <% } %>
+     <% } %>
+      </div>
+      <div class="center-column">
+        <div>
+          <% if(user) {%>
+          <script src="js/comment-form.js" type="text/javascript" defer></script>
+          <script src="js/like.js" type="text/javascript" defer></script>
+          <form method="POST" >
+            <textarea
+              type="text"
+	            class="trans"
+              name="com"
+              placeholder="Escribe tu opinión..."
+              size="2000"
+              required
+            ></textarea>
+            <div id="form-column">
+              <button class="btn trans" type="submit"  required>Enviar</button>
+           <div id="thanks"></div>
+          </div>
+          </form>
+          <% } else {%>
+          <div class="info" style="color:red;"><p><ion-icon name="lock-closed-sharp"></ion-icon>
+                *Para enviar tu opinión anonima es necesario iniciar sesión con
+                Google*
+            <ion-icon name="lock-closed-sharp"></ion-icon></p></div>
+          <% } %>
+          <div></div>
+        </div>
+        <div class="info">
+          <h2>¿Porque nosotros estamos haciendo esto?</h2>
+	  <!-- &emsp; is four spaces like a tab -->
+          <p>
+            &emsp; Nosotros queremos obtener la opinion de alumnos del otros colegios
+            para mejorar nuestro y a ver si funciona blah blah blah... ...
+          </p>
+        </div>
+      </div>
+    <div class="content-column">
+   <h2><a href="/comentarios/populares">OPINIONES POPULARES</a></h2>
+<% for(let i = 0; i < Math.min(data.sort((a,b)=> b.likedBy.length - a.likedBy.length).length, 10); i++){ %>
+  <% const post = data[i] %>
+        <% if (post.verified) {%>
+	<div class="post" data-post-id="<%= post.id %>">
+	  <div class="rating">
+          <h4><%= post.date.toLocaleDateString("en-ES") %></h4>
+      <% if (post.likedBy.includes(user.id)) {%>
+        <div class="post-rating post-rating-selected">
+        <% }else{ %>
+	        <div class="post-rating">
+        <% } %>
+        <ion-icon class="post-rating-button arrow-up btn trans opi" size="large" name="heart"></ion-icon>
+        <span class="post-rating-count"><%= post.likedBy.length %></span>
+	    </div>
+	  </div>
+	  <article>
+      <% if(post.comment.length >= 100){ %>
+        <%= post.comment.substring(0, 220) %><a href="/api/productos/<%= post._id %>"> ver mas...</a>
+        <% }else{ %>
+        <%= post.comment %>
+        <% } %>
+    </article>
+	</div>
+  <% } %>
+     <% } %>
+    </div>
+    </div>
+    <footer>
+      <div class="content-footer">
+      <div class="almondale trans">
+        <div>
+          <img src="img/almondale.png" alt="LA" />
+        </div>
+	      <div class="sidebar"></div>
+        <div><a href="https://almondale.cl/proyecto-almondale/"><h3>The Almondale School Valle</h3></a></div>
+      </div>
+      <div>
+          <ul>
+            <li><a href="proyecto.html">Proyecto</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        <br>
+          <ul>
+          <li><a href="privacidad.html">Politica de privacidad</a></li>
+          <li><a href="terminos.html">Terminos & Condiciones</a></li>
+        </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<!-- i think it can help with privacy policy for website https://app.getterms.io/create -->

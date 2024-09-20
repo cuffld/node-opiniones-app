@@ -1,0 +1,68 @@
+<head>
+  <title>Proyecto ABP</title>
+<%- include('head.ejs') -%>
+</head>
+<body>
+<div class="content-row">
+<% if(populares){ %>
+<% if(user){ %>
+       <script type="text/javascript" src="/js/like.js" defer></script>
+<% } %>
+<% for(let i = 0; i < data.sort((a,b)=> b.likedBy.length - a.likedBy.length).length; i++){ %>
+  <% const post = data[i] %>
+        <% if (post.verified) {%>
+	<div class="post" data-post-id="<%= post.id %>">
+	  <div class="rating">
+          <h4><%= post.date.toLocaleDateString("en-ES") %></h4>
+      <% if (post.likedBy.includes(user.id)) {%>
+        <div class="post-rating post-rating-selected">
+        <% }else{ %>
+	        <div class="post-rating">
+        <% } %>
+        <ion-icon class="post-rating-button arrow-up btn trans opi" size="large" name="heart"></ion-icon>
+        <span class="post-rating-count"><%= post.likedBy.length %></span>
+	    </div>
+	  </div>
+	  <article>
+<% if(post.comment.length >= 100){ %>
+        <%= post.comment.substring(0, 230) %><a href="/api/productos/<%= post._id %>"> ver mas...</a>
+        <% }else{ %>
+        <%= post.comment %>
+        <% } %>
+    </article>
+	</div>
+  <% } %>
+     <% } %>
+  <% }else{ %>
+     <% if(user){ %>
+       <script type="text/javascript" src="/js/like.js" defer></script>
+       <% } %>
+<% for(let i = 1; i <= data.length; i++){ %>
+        <% const post = data.at(-i) %>
+        <% if (post.verified) {%>
+	<div class="post" data-post-id="<%= post.id %>">
+	  <div class="rating">
+          <h4><%= post.date.toLocaleDateString("en-ES") %></h4>
+      <% if (post.likedBy.includes(user.id)) {%>
+        <div class="post-rating post-rating-selected">
+        <% }else{ %>
+	        <div class="post-rating">
+        <% } %>
+        <ion-icon class="post-rating-button arrow-up btn trans opi" size="large" name="heart"></ion-icon>
+        <span class="post-rating-count"><%= post.likedBy.length %></span>
+	    </div>
+	  </div>
+	  <article>
+<% if(post.comment.length >= 100){ %>
+        <%= post.comment.substring(0, 230) %><a href="/api/productos/<%= post._id %>"> ver mas...</a>
+        <% }else{ %>
+        <%= post.comment %>
+        <% } %>
+
+    </article>
+	</div>
+  <% } %>
+     <% } %>
+  <% } %>
+  </div>
+</body>

@@ -1,0 +1,22 @@
+<!doctype html>
+<%- include('head.ejs') -%>
+<h1>admin</h1> <a href="/" style="color:black;">AL INICIO</a>
+<div style="border:none;">
+<script src="js/form.js" type="text/javascript" defer></script>
+<form class="content-column" method="PUT" id="name">
+<% for(let i = 0; i < Math.min(data.length, 10); i++) { %>
+  <% const post = data[i] %>
+	<div>
+	  <div class="rating">
+          <h4><%= post.date.getFullYear(); %>-<%= post.date.getMonth() %>-<%= post.date.getDate() %></h4>
+	    <div>
+        <input type="checkbox" value="No" class="arrow-down btn trans" name="<%= post.id %>"/><ion-icon name="close-outline"></ion-icon>
+	    </div>
+	  </div>
+	  <article>
+      <%= post.comment %>
+    </article>
+	</div>
+<% } %>
+<button type="submit">Enviar</button>
+</form>

@@ -1,0 +1,28 @@
+{
+  "name": "nd-t",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch app.js",
+  },
+  "keywords": [],
+  "author": "cuffld",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookie-session": "^2.1.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-validator": "^7.2.0",
+    "googleapis": "^142.0.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.3",
+    "passport": "^0.5.3",
+    "passport-google-oauth2": "^0.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+  }
+}

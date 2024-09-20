@@ -1,0 +1,27 @@
+<head>
+  <title>Comentario</title>
+  <%- include('head') -%>
+</head>
+<body style="font-size:1.5rem">
+<% if(user){ %>
+       <script type="text/javascript" src="/js/like.js" defer></script>
+       <% } %>
+<div class="content-column">
+<div class="post" data-post-id="<%= post.id %>" style="width:50%;">
+	  <div class="rating">
+      <h4><%= post.date.toLocaleDateString("en-ES") %></h4>
+      <% if (post.likedBy.includes(user.id)) {%>
+        <div class="post-rating post-rating-selected">
+        <% }else{ %>
+	        <div class="post-rating">
+        <% } %>
+        <ion-icon class="post-rating-button arrow-up btn trans opi" size="large" name="heart"></ion-icon>
+        <span class="post-rating-count"><%= post.likedBy.length %></span>
+          </div>
+	  </div>
+	  <article>
+        <%= post.comment%>
+    </article>
+	</div>
+</div>
+</body>
