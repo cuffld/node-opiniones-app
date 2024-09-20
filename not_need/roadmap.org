@@ -1,6 +1,0 @@
-#+title: project roadmap
-
-* TODO Comment system
-** TODO Like system
-
-* TODO Administrators system
