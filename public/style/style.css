@@ -13,7 +13,7 @@
 
 body {
     font-family:sans-serif;
-    font-size: 1rem;
+    font-size: 1.25rem;
     background:#f9f9f9;
 }
 
@@ -338,40 +338,47 @@ footer{
     padding:1rem;
     & .content-footer{
         display:flex;
-        justify-content:space-evenly;
+        justify-content:space-between;
         align-items:center;
-        padding:1rem;
+        width:100%;
     }
     & .almondale{
 	max-width:1em;
     }
-    & .col {
-        flex-direction:column;
-    }
 }
 
 @media all and (max-width:958px){ /* when 50% of screen is off, make to change grid on vertical rows */
+    body{
+        font-size:1rem;
+    }
     .content{
-	grid-template-rows:2fr 1fr 1fr;
-	grid-template-columns:0;
+        grid-template-columns:0;
+        display:flex;
+    }
+  .content-column{
+         display:none;
     }
     div:has(form){
 	grid-column:span 2;
 	order:0;
     }
-    .content-column{
+    .content-column:has(form){
+        visibility:none;
 	grid-column: span 2;
 	order:1;
 	flex-direction: row;
 	max-width:100%;
+    min-height:210px;
     max-height:auto;
 	height:auto;
 	padding:0.05rem;
 	& article{
-	    width:min(30ch, 90%);
+	    width:clamp(min(30ch, 90%), 260px, 100%);
+        height:clamp(90%, 210px, min(30ch, 90%));
 	}
     & div div{
-    width:170px;
+    max-width:170px;
+
     }
     }
     nav{
@@ -382,5 +389,15 @@ footer{
     }
     .center-column{
         justify-items:center;
+        align-items:center;
+    }
+    footer{
+        & .almondale{
+            display:none;
+        }
+        & .content-footer{
+            justify-content:center;
+            align-items:center;
+        }
     }
 }

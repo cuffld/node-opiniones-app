@@ -22,7 +22,7 @@ router.get( '/login/callback',
     }));
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) =>{
-    res.redirect('/profile')
+    res.redirect('/')
 });
 
 export default router

@@ -12,7 +12,7 @@ router.get('/productos/:id', param('id').isString().trim().notEmpty(), async (re
 	    const product = await Product.findById(id);
     if(product.verified){
         if(req.user === undefined){
-            return res.render("comment-full.ejs", {user: false, data});
+            return res.render("comment-full.ejs", {user: false, post: product});
         }
         res.render("comment-full.ejs", {user: req.user, post: product})
     }else{
