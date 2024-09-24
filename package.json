@@ -1,11 +1,14 @@
 {
   "name": "nd-t",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch app.js"
+    "start": "node app.js",
+    "build": "npm i && npx postcss public/style/style.css -d public/style/new/ && npm prune --omit=dev",
+    "dev": "node --watch app.js"
   },
+
   "keywords": [],
   "author": "cuffld",
   "license": "ISC",
@@ -22,7 +25,12 @@
     "passport": "^0.5.3",
     "passport-google-oauth2": "^0.2.0"
   },
+
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "nodemon": "^3.1.4",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0"
   }
 }

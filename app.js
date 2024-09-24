@@ -62,11 +62,6 @@ app.get('/admin', adminVerif, async (req, res) => {
     }
 });
 
-// app.get('/', async (req, res)=>{
-//     await Product.deleteMany({})
-//     res.send("Succes")
-// })
-
 app.get('/', async (req, res) => {
     try{
         const data = await Product.find({verified: true});
