@@ -220,6 +220,9 @@ a{
     & a{
 	color:black;
     }
+    & h2{
+        font-size:1.25rem;
+    }
     & article a{
 	color:var(--azul);
 	&:hover{
