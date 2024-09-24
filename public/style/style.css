@@ -29,7 +29,7 @@ nav{
     padding-left:.75rem;
     padding-right: .75rem;
     width:auto;
-    min-height:5.125rem;
+    min-height:4.125rem;
     & * {
 	margin:.10rem;
     }
@@ -89,13 +89,12 @@ img{
     justify-content:space-between;
     align-items:center;
     & img{
-	height:5rem;
-
+	height:3rem;
     }
     & h3{
 	width:13ch;
 	overflow-wrap:wrap;
-	font-size:1.5rem;
+	font-size:1.25rem;
     }
 }
 
