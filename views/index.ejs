@@ -23,7 +23,7 @@
     </nav>
     <div class="content">
       <div class="content-column">
-<h2><a href="/comentarios/recientes">OPINIONES RECIENTES</a></h2>
+<h3><a href="/comentarios/recientes">OPINIONES RECIENTES</a></h3>
       <% for(let i = 1; i <= Math.min(data.length, 10); i++){ %>
         <% const post = data.at(-i)%>
         <% if (post.verified) {%>
@@ -87,7 +87,7 @@
         </div>
       </div>
     <div class="content-column">
-   <h2><a href="/comentarios/populares">OPINIONES POPULARES</a></h2>
+   <h3><a href="/comentarios/populares">OPINIONES POPULARES</a></h3>
 <% for(let i = 0; i < Math.min(data.sort((a,b)=> b.likedBy.length - a.likedBy.length).length, 10); i++){ %>
   <% const post = data[i] %>
         <% if (post.verified) {%>
