@@ -175,9 +175,11 @@ a{
    overflow-wrap:wrap;
    word-wrap:break-word;
     }
-    & h3:has(a){
+    & h3 {
+        font-size:1.10rem;
+    }
+    & a{
 	color:black;
-    font-size:1.10rem;
     }
     & article a{
 	color:var(--azul);
