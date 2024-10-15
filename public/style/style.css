@@ -1,6 +1,7 @@
 :root{
     --rojo:hsl(345.2,45.8%,34.7%);
     --azul:hsl(231.2,19.5%,34.1%);
+    --post-azul:hsl(231.2,19.5%,50%);
 }
 * {
     /* box-sizing:border-box; */
@@ -53,7 +54,7 @@ img{
     border:none;
     padding:0.25em;
     white-space:nowrap;
-    background:#f9f9f9;
+    background:var(--azul);
     cursor:pointer;
     & img, ion-icon{
 	width:1.10em;
@@ -61,7 +62,7 @@ img{
     &:hover{
 	/* box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) , */
 	/* 		-10px -10px 10px white ; */
-	background:white;
+	background:var(--post-azul);
 	/*letter-spacing: 0.10em;*/
     border-width:1px;
     border:solid;
@@ -139,7 +140,7 @@ a{
     border-style:solid;
     /* border-width:0.25rem; */
     border-width:1px;
-    border-color: #ddd  ; /* rojo */
+    border-color:#ddd  ; /* rojo */
     border-radius:5px;
     background:#813044;
     /* border-radius:5px; */
@@ -177,12 +178,12 @@ a{
    overflow-wrap:wrap;
    word-wrap:break-word;
     }
-    & h3 {
+    & a{
+        color:black;
+    }
+    & h3:has(a) {
         font-size:1.30rem;
         color:#f9f9f9;
-    }
-    & a{
-	color:black;
     }
     & article a{
 	color:var(--azul);
@@ -310,6 +311,11 @@ textarea{
     padding:0.50rem;
     align-items:center;
     justify-content:center;
+    & hr{
+        color:#f9f9f9;
+        border-radius:5px;
+        border-style:solid;
+    }
 }
 /* start of copy */
 .post {
