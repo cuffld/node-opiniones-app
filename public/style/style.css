@@ -90,7 +90,8 @@ img{
     justify-content:space-between;
     align-items:center;
     & img{
-	height:3.75rem;
+	height:auto;
+    width:4rem;
     }
     & h3{
 	width:13ch;
