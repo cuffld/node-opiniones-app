@@ -23,7 +23,7 @@
     </nav>
     <div class="content">
       <div class="content-column">
-<h3><a href="/comentarios/recientes">OPINIONES RECIENTES</a></h3>
+<h3><a href="/comentarios/recientes" style="color:#f9f9f9">OPINIONES RECIENTES</a></h3>
       <% for(let i = 1; i <= Math.min(data.length, 10); i++){ %>
         <% const post = data.at(-i)%>
         <% if (post.verified) {%>
@@ -65,12 +65,12 @@
               required
             ></textarea>
             <div id="form-column">
-              <button class="btn trans" type="submit"  required>Enviar</button>
+              <button class="btn trans" type="submit" style="background:hsl(231.2,19.5%,50%);" required>Enviar</button>
            <div id="thanks"></div>
           </div>
           </form>
           <% } else {%>
-          <div class="info" style="color:red;"><p><ion-icon name="lock-closed-sharp"></ion-icon>
+          <div class="info" style="color:red;background:#f9f9f9;"><p><ion-icon name="lock-closed-sharp"></ion-icon>
                 *Para enviar tu opinión anonima es necesario iniciar sesión con
                 Google*
             <ion-icon name="lock-closed-sharp"></ion-icon></p></div>
@@ -80,13 +80,14 @@
         <div class="info">
           <h2>¿Cual es el objetivo de nuestra página?</h2>
           <hr>
+          <br>
           <p>
             &emsp; Nuestro objetivo con esta página es el de recolectar diversas opiniones, inquietudes y/o consultas con el fin de ser recolectadas y dárselas al CEAL para que se contacten con nuestros directivos y hagan un cambio en base a esta información.
           </p>
         </div>
       </div>
     <div class="content-column">
-   <h3><a href="/comentarios/populares">OPINIONES POPULARES</a></h3>
+   <h3><a href="/comentarios/populares" style="color:#f9f9f9">OPINIONES POPULARES</a></h3>
 <% for(let i = 0; i < Math.min(data.sort((a,b)=> b.likedBy.length - a.likedBy.length).length, 10); i++){ %>
   <% const post = data[i] %>
         <% if (post.verified) {%>

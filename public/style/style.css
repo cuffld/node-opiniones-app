@@ -54,7 +54,7 @@ img{
     border:none;
     padding:0.25em;
     white-space:nowrap;
-    background:var(--azul);
+    background:white;
     cursor:pointer;
     & img, ion-icon{
 	width:1.10em;
@@ -62,7 +62,7 @@ img{
     &:hover{
 	/* box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) , */
 	/* 		-10px -10px 10px white ; */
-	background:var(--post-azul);
+	background:#f9f9f9;
 	/*letter-spacing: 0.10em;*/
     border-width:1px;
     border:solid;
@@ -181,9 +181,8 @@ a{
     & a{
         color:black;
     }
-    & h3:has(a) {
+    & h3 {
         font-size:1.30rem;
-        color:#f9f9f9;
     }
     & article a{
 	color:var(--azul);
